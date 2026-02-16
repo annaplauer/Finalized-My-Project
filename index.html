@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anna | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@900&family=Reenie+Beanie&display=swap" rel="stylesheet">
+    <style>
+        /* --- GLOBAL STYLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Arial', sans-serif; overflow-x: hidden; background-color: #fff; color: #111; }
+
+        /* --- NAVIGATION --- */
+        header {
+            position: fixed; top: 0; width: 100%; padding: 40px 60px;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; transition: 0.5s ease; background: transparent;
+        }
+        header.scrolled { 
+            background: rgba(255,255,255,0.95); padding: 20px 60px; 
+            backdrop-filter: blur(10px); box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+        }
+        .logo { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.8rem; letter-spacing: 5px; cursor: pointer; }
+        nav a { margin-left: 30px; text-decoration: none; color: #111; font-size: 0.75rem; text-transform: uppercase; font-weight: bold; cursor: pointer; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.2)), url('./img/sunset.jpg'); 
+            background-size: cover; background-position: center; background-attachment: fixed;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .masked-text { font-family: 'Oswald', sans-serif; font-size: 14vw; transform: scaleY(1.8); letter-spacing: -2px; display: flex; text-transform: uppercase;}
+        .letter { display: inline-block; -webkit-background-clip: text !important; background-clip: text !important; color: transparent !important; -webkit-text-fill-color: transparent !important; background-size: cover; background-position: center; }
+
+        /* --- SECTIONS --- */
+        section { height: 100vh; width: 100%; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+
+        #section1 { 
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('./img/section1.png'); 
+            background-size: cover; background-position: top center; background-attachment: fixed;
+            justify-content: flex-end; align-items: flex-end; padding: 60px;
+        }
+        .pencil-wrap { text-align: right; border-right: 1px solid rgba(255,255,255,0.3); padding-right: 20px; }
+        .pencil-title { font-family: 'Reenie Beanie', cursive; font-size: 5rem; color: #fff; line-height: 1; margin-bottom: 10px; }
+        .pencil-arrow { width: 80px; cursor: pointer; transition: 0.3s; }
+
+        #section2 { background: #fafafa; flex-direction: column; cursor: pointer; }
+        #section3 { background: #fff; }
+        #section4 { background: #111; cursor: pointer; }
+
+        .portal-img { width: 80%; max-width: 900px; cursor: pointer; transition: 0.8s; box-shadow: 0 40px 100px rgba(0,0,0,0.06); }
+
+        /* --- SUB-TAB OVERLAYS --- */
+        .subtab-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 2000; display: none; overflow-y: auto; padding: 100px 10%; }
+        .close-btn { position: fixed; top: 40px; right: 60px; font-family: 'Oswald', sans-serif; letter-spacing: 5px; cursor: pointer; border-bottom: 2px solid #111; z-index: 2100; font-size: 0.8rem;}
+        .subtab-content { max-width: 1100px; margin: 0 auto; text-align: center; }
+        .subtab-title { font-family: 'Oswald', sans-serif; font-size: 6vw; text-transform: uppercase; margin-bottom: 40px; }
+
+        footer { background: #000; color: #fff; padding: 60px; text-align: center; font-family: 'Oswald', sans-serif; letter-spacing: 3px; }
+    </style>
+</head>
+<body>
+
+    <header id="navbar">
+        <div class="logo" onclick="window.scrollTo(0,0)">ANNA</div>
+        <nav>
+            <a onclick="openTab('originTab')">Origin</a>
+            <a onclick="openTab('expTab')">Experience</a>
+            <a onclick="openTab('itnavTab')">Itnav</a>
+            <a onclick="openTab('loveTab')">Love</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1 class="masked-text">
+            <span class="letter" style="background-image: url('./img/track.jpg');">G</span>
+            <span class="letter" style="background-image: url('./img/kimono.jpg');">R</span>
+            <span class="letter" style="background-image: url('./img/grand.jpg');">E</span>
+            <span class="letter" style="background-image: url('./img/bball.jpg');">E</span>
+            <span class="letter" style="background-image: url('./img/graduation.png');">T</span>
+            <span class="letter" style="background-image: url('./img/baby.jpg');">I</span>
+            <span class="letter" style="background-image: url('./img/tom.jpg');">N</span>
+            <span class="letter" style="background-image: url('./img/yoyo.jpg');">G</span>
+            <span class="letter" style="background-image: url('./img/weirdo.jpg');">S</span>
+        </h1>
+    </div>
+
+    <section id="section1">
+        <div class="pencil-wrap">
+            <h2 class="pencil-title">ふっきーはどこの人？</h2>
+            <svg class="pencil-arrow" onclick="openTab('originTab')" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 50H95M95 50L75 30M95 50L75 70" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </section>
+
+    <section id="section2" onclick="openTab('expTab')">
+        <h2 style="font-family:'Oswald'; font-size: 4rem; letter-spacing: 10px; text-transform: uppercase;">Experiences</h2>
+    </section>
+
+    <section id="section3">
+        <img src="./img/itnavmeeting.png" class="portal-img" onclick="openTab('itnavTab')" alt="Itnav Portal">
+    </section>
+
+    <section id="section4" onclick="openTab('loveTab')">
+        <h2 style="color: #fff; font-family:'Oswald'; font-size: 4rem; letter-spacing: 10px;">I LOVE.....</h2>
+    </section>
+
+<div id="originTab" class="subtab-overlay" style="
+    background-color: #f4e4bc; 
+    padding: 0; 
+    overflow-x: hidden;
+">
+    <div class="close-btn" onclick="closeTabs()" style="
+        background: rgba(255,255,255,0.9); 
+        padding: 10px 20px; 
+        border: 1px solid #111;
+        position: fixed;
+    ">CLOSE ✕</div>
+
+    <div class="map-scroll-container" style="
+        width: 100%;
+        min-height: 250vh; 
+        background-image: url('./img/airplane.png');
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+        background-position: top center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    ">
+    </div>
+</div>
+
+    <div id="expTab" class="subtab-overlay">
+        <div class="close-btn" onclick="closeTabs()">CLOSE ✕</div>
+        <div class="subtab-content">
+            <h2 class="subtab-title">Experience</h2>
+        </div>
+    </div>
+
+    <div id="itnavTab" class="subtab-overlay">
+        <div class="close-btn" onclick="closeTabs()">CLOSE ✕</div>
+        <div class="subtab-content">
+            <h2 class="subtab-title">イトナブとの出会い</h2>
+            <img src="./img/caleb.png" style="width: 85%; box-shadow: 0 30px 60px rgba(0,0,0,0.1);" alt="Itnav Journey">
+        </div>
+    </div>
+
+    <div id="loveTab" class="subtab-overlay" style="background: #111; color: #fff;">
+        <div class="close-btn" onclick="closeTabs()" style="color: #fff; border-color: #fff;">CLOSE ✕</div>
+        <div class="subtab-content">
+            <h2 class="subtab-title">Things I Love</h2>
+        </div>
+    </div>
+
+    <footer><p>COPYRIGHT © 2026 ANNA</p></footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('header');
+            if (window.scrollY > 100) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        function openTab(tabId) {
+            document.getElementById(tabId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTabs() {
+            document.querySelectorAll('.subtab-overlay').forEach(tab => {
+                tab.style.display = 'none';
+            });
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+</body>
+</html>
